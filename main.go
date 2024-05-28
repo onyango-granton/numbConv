@@ -10,6 +10,8 @@ func main() {
 
 
 	fmt.Println(indexArr)
+
+	fmt.Println(powerOf(2,0))
 }
 
 func intToString(num int) string {
@@ -54,4 +56,15 @@ func getIndexArr(numString string) []int {
 	}
 
 	return indexArr
+}
+
+func powerOf(num, pow int) int {
+	if pow == 0{
+		return 1
+	}
+	startNum := num
+	for i:=1; i < pow;i++{
+		startNum *= num
+	}
+	return startNum
 }
