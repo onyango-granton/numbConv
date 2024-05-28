@@ -14,11 +14,11 @@ func main() {
 	fmt.Scanln(&input)
 	decimal, err := byteToDecimal(input)
 
-	if err != nil{
+	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
 	} else {
-		fmt.Printf("Decimal Value:	%v\n",decimal)
+		fmt.Printf("Decimal Value:	%v\n", decimal)
 	}
 }
 
