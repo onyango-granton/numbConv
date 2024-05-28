@@ -6,21 +6,7 @@ func main() {
 	num := 11111110
 	numString := intToString(num)
 
-	indexPow := -1
-	indexArr := []int{}
-
-	for  range numString{
-		indexPow++
-		indexArr = append(indexArr, indexPow)
-	}
-
-	for range indexArr{
-		for i := range indexArr{
-			if i + 1 < len(indexArr) && indexArr[i] < indexArr[i+1]{
-				indexArr[i], indexArr[i+1] = indexArr[i+1], indexArr[i]
-			}
-		}
-	}
+	indexArr := getIndexArr(numString)
 
 
 	fmt.Println(indexArr)
@@ -50,3 +36,22 @@ func intToString(num int) string {
 	return revRes
 }
 
+func getIndexArr(numString string) []int {
+	indexPow := -1
+	indexArr := []int{}
+
+	for  range numString{
+		indexPow++
+		indexArr = append(indexArr, indexPow)
+	}
+
+	for range indexArr{
+		for i := range indexArr{
+			if i + 1 < len(indexArr) && indexArr[i] < indexArr[i+1]{
+				indexArr[i], indexArr[i+1] = indexArr[i+1], indexArr[i]
+			}
+		}
+	}
+
+	return indexArr
+}
