@@ -4,9 +4,31 @@ import "fmt"
 
 func main() {
 	num := 11111110
+	numString := intToString(num)
+
+	indexPow := -1
+	indexArr := []int{}
+
+	for  range numString{
+		indexPow++
+		indexArr = append(indexArr, indexPow)
+	}
+
+	for range indexArr{
+		for i := range indexArr{
+			if i + 1 < len(indexArr) && indexArr[i] < indexArr[i+1]{
+				indexArr[i], indexArr[i+1] = indexArr[i+1], indexArr[i]
+			}
+		}
+	}
+
+
+	fmt.Println(indexArr)
+}
+
+func intToString(num int) string {
 	res := ""
 	revRes := ""
-
 	for num != 0{
 		startRune := '0'
 
@@ -25,7 +47,6 @@ func main() {
 		revRes += string(res[i])
 	}
 
-	fmt.Println(revRes)
+	return revRes
 }
-
 
