@@ -3,15 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	num := 11111110
+	num := 11000001
 	numString := intToString(num)
 
-	indexArr := getIndexArr(numString)
 
-
-	fmt.Println(indexArr)
-
-	fmt.Println(powerOf(2,0))
+	fmt.Println(byteToDecimal(numString))
 }
 
 func intToString(num int) string {
@@ -67,4 +63,22 @@ func powerOf(num, pow int) int {
 		startNum *= num
 	}
 	return startNum
+}
+
+
+func byteToDecimal(numString string) int {
+	indexArr := getIndexArr(numString)
+	res := 0
+
+	for i, ch := range numString{
+		if ch == '1' {
+			res += powerOf(2, indexArr[i]) * 1
+		} else if ch == '0' {
+			res += powerOf(2, indexArr[i]) * 0
+		} else {
+			return 0
+		}
+	}
+
+	return res
 }
