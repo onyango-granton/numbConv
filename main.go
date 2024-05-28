@@ -2,9 +2,24 @@ package main
 
 import (
 	"errors"
+	"fmt"
+	"os"
 )
 
 func main() {
+	// hello,_ := fmt.Scan()
+	// fmt.Println(hello)
+	fmt.Print("Enter byte:	")
+	input := ""
+	fmt.Scanln(&input)
+	decimal, err := byteToDecimal(input)
+
+	if err != nil{
+		fmt.Println(err.Error())
+		os.Exit(1)
+	} else {
+		fmt.Printf("Decimal Value:	%v\n",decimal)
+	}
 }
 
 func intToString(num int) string {
