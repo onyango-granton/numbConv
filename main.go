@@ -1,13 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+	"os"
+)
 
 func main() {
 	num := 11000001
 	numString := intToString(num)
 
+	decimal, err := byteToDecimal(numString)
 
-	fmt.Println(byteToDecimal(numString))
+	if err != nil{
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+
+
+
+	fmt.Println(decimal)
 }
 
 func intToString(num int) string {
@@ -66,7 +78,7 @@ func powerOf(num, pow int) int {
 }
 
 
-func byteToDecimal(numString string) int {
+func byteToDecimal(numString string) (int, error) {
 	indexArr := getIndexArr(numString)
 	res := 0
 
@@ -76,9 +88,10 @@ func byteToDecimal(numString string) int {
 		} else if ch == '0' {
 			res += powerOf(2, indexArr[i]) * 0
 		} else {
-			return 0
+			errorMsg := "invalid bit numeral " + string(ch)
+			return 0, errors.New(errorMsg)
 		}
 	}
 
-	return res
+	return res, nil
 }
